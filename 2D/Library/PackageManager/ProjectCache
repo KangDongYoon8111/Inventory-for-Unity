@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637905249116224023
-    m_Hash: 2644529640
+      ticks: 637906216867654815
+    m_Hash: 3107804824
   m_LockFileStatus:
     m_FilePath: D:/Unity/GitHub/Inventory-for-Unity/2D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637905249116664441
-    m_Hash: 2698909084
+      ticks: 637906216867654815
+    m_Hash: 707255216
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
