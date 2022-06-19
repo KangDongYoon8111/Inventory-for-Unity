@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
+    // Inventory 컴포넌트가 담길 변수
     private Inventory inventory;
 
     // Inventory UI 오브젝트가 담길 변수
@@ -25,10 +26,15 @@ public class InventoryUI : MonoBehaviour
         // inventoryPanel의 활성화 상태를 activaInventory 값(비활성화)으로 바꿔주세요.
         inventoryPanel.SetActive(activeInventory);
 
+        // inventory 변수 초기화
         inventory = Inventory.instance;
+        // Inventory>onSlotCountChange에 SlotChange 메서드 등록(구독)
         inventory.onSlotCountChange += SlotChange;
+        // Inventory>onChangeItem에 RedrawSlotUI 메서드 등록(구독)
+        inventory.onChangeItem += RedrawSlotUI;
     }
 
+    // inventory의 SlotCount의 값만큼 Slot을 활성화시키는 메서드
     private void SlotChange(int value)
     {
         for (int i = 0; i < slots.Length; i++)
@@ -37,8 +43,25 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void AddSlot(){
+    // inventory의 SlotCount의 값을 증가시키는 메서드
+    public void AddSlot()
+    {
         inventory.SlotCount++;
+    }
+
+    // 반복문을 통해 슬롯들을 초기화하고 items의 개수만큼 slot을 채워넣는 메서드
+    private void RedrawSlotUI()
+    {
+        for(int i = 0; i < slots.Length; i++)
+        {
+            slots[i].RemoveSlot();
+        }
+
+        for(int i = 0; i < inventory.items.Count; i++)
+        {
+            slots[i].item = inventory.items[i];
+            slots[i].UpdateSlotUI();
+        }
     }
 
     void Update()
